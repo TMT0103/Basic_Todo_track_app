@@ -1,6 +1,6 @@
 import { TrashIcon } from "@heroicons/react/24/outline";
 
-const TodoItem = ({ todo, toggleTodo, deleteTodo }) => {
+const TodoItem = ({ todo, toggleTodo, deleteTodo}) => {
   const priority = todo.priority || "Medium";
 
   const priorityClass =
@@ -12,7 +12,16 @@ const TodoItem = ({ todo, toggleTodo, deleteTodo }) => {
 
   return (
     <article className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2 shadow-sm">
-      <div className="min-w-0 flex-1">
+      <div className="flex min-w-0 flex-1 items-start gap-3">
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={() => toggleTodo(todo.id)}
+          className="mt-1 h-4 w-4 cursor-pointer rounded border-slate-300 text-blue-600 focus:ring-blue-400"
+          aria-label={`Mark ${todo.text} as completed`}
+        />
+
+        <div className="min-w-0 flex-1">
         <button
           type="button"
           onClick={() => toggleTodo(todo.id)}
@@ -30,6 +39,7 @@ const TodoItem = ({ todo, toggleTodo, deleteTodo }) => {
           {todo.deadline && (
             <span className="text-xs text-slate-500">Due: {todo.deadline}</span>
           )}
+        </div>
         </div>
       </div>
 

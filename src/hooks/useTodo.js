@@ -34,5 +34,11 @@ export const useTodo = () => {
     );
   };
 
-  return { todos, addTodo, deleteTodo, toggleTodo };
+  const sortByDeadline = () => {
+  return [...todos].sort((a, b) => {
+    return new Date(a.deadline) - new Date(b.deadline);
+  });
+};
+
+return { todos, addTodo, deleteTodo, toggleTodo, sortByDeadline };
 };

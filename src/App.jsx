@@ -4,7 +4,7 @@ import TodoList from "./components/TodoList";
 import { useTodo } from "./hooks/useTodo";
 
 function App() {
-  const { todos, addTodo, deleteTodo, toggleTodo } = useTodo();
+  const { todos, addTodo, deleteTodo, toggleTodo, sortByDeadline } = useTodo();
 
   return (
     <div className="min-h-screen bg-slate-100 px-4 py-10">
@@ -17,6 +17,7 @@ function App() {
 
         <TodoList
           todos={todos}
+          sortByDeadline={sortByDeadline}
           toggleTodo={toggleTodo}
           deleteTodo={deleteTodo}
         />
